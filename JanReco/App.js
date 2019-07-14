@@ -5,10 +5,10 @@ import Icon from 'react-native-vector-icons/Ionicons';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Image source={ require('./image/logo_janreco.jpg')} style={styles.topLogo}/>
+      <Image source={ require('./assets/image/logo_janreco.jpg')} style={styles.topLogo}/>
       <View style={styles.inputBox}>
         <Icon name="md-person" style={styles.icon} />
-        <TextInput style={styles.input} placeholder="Username" placeholderTextColor='#f5e1da' autoCorrect={false}　autoCapitalize="none"/>
+        <TextInput style={styles.input} placeholder="User Name" placeholderTextColor='#f5e1da' autoCorrect={false}　autoCapitalize="none"/>
       </View>
       <View style={styles.inputBox}>
         <Icon name="ios-lock" style={styles.icon} />
@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: '#f5e1da',
     marginBottom: 10,
+    height: 32,
   },
   input: {
     backgroundColor:'#40A698',
