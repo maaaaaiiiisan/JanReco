@@ -6,5 +6,4 @@ const App = createStackNavigator({
     ScoreList: {screen: ScoreListScreen  },
     Login: { screen:LoginScreen },
 });
-
 export default createAppContainer(App);

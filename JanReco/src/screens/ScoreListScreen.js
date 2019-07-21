@@ -1,15 +1,29 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, TouchableHighlight } from 'react-native';
+import CircleButton from '../elements/CircleButton';
 
 class ScoreListScreen extends React.Component {
   render() {
     return (
-      <View styles={styles.container}>
-        <View styles={styles.header}>
-        <Text>Hello, world!</Text>
+      <View style={styles.container}>
+        <View style={styles.menu}>
+          <Text style={styles.menu_title}>すべて</Text>
+          <Text style={styles.menu_title}>参加済みチーム</Text>
+          <Text style={styles.menu_title}>参加済み卓</Text>
         </View>
-        <View styles={styles.menu}>
+        <View style={styles.scorelist}>
+          <Text style={styles.scorelist_name}>チーム 中学</Text>
+          <Text style={styles.scorelist_info}>試合数3回・2019/07/21 17:21</Text>
         </View>
+        <View style={styles.scorelist}>
+          <Text style={styles.scorelist_name}>チーム 中学</Text>
+          <Text style={styles.scorelist_info}>試合数3回・2019/07/21 17:21</Text>
+        </View>
+        <View style={styles.scorelist}>
+          <Text style={styles.scorelist_name}>チーム 中学</Text>
+          <Text style={styles.scorelist_info}>試合数3回・2019/07/21 17:21</Text>
+        </View>
+        <CircleButton />
       </View>
     );
   }
@@ -17,19 +31,33 @@ class ScoreListScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#40A698',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  header: {
-    backgroundColor: '#40A698',
-    // height: 30,
-    color: '#fff',
+    backgroundColor: '#c7d8d8',
+    width: '100%',
   },
   menu: {
     backgroundColor: '#fff',
-    height: 30,
-    color: '#313131',
+    flexDirection: 'row',
+    height: 60,
+    borderColor: '#787c7b',
+    borderBottomWidth: 1,
+  },
+  menu_title: {
+    padding: 20,
+    fontWeight: '400',
+  },
+  scorelist: {
+    backgroundColor: '#fff',
+    padding: 20,
+    height: 80,
+    borderColor: '#787c7b',
+    borderBottomWidth: 0.5,
+  },
+  scorelist_name: {
+    fontSize: 20,
+    paddingBottom: 5,
+  },
+  scorelist_info: {
+    color: '#787c7b',
   },
 });
 

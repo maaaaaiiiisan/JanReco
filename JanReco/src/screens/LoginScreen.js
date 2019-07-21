@@ -3,26 +3,25 @@ import { StyleSheet, Text, TextInput, Image, View, TouchableHighlight, Button } 
 import Icon from 'react-native-vector-icons/Ionicons';
 
 class LoginScreen extends React.Component {
-render() {
-  return (
-    <View style={styles.container}>
-      <Image source={ require('../../assets/image/logo_janreco.jpg')} style={styles.topLogo}/>
-      <View style={styles.inputBox}>
-        <Icon name="md-person" style={styles.icon} />
-        <TextInput style={styles.input} placeholder="User Name" placeholderTextColor='#f5e1da' autoCorrect={false}　autoCapitalize="none"/>
+  render() {
+    return (
+      <View style={styles.container}>
+        <Image source={ require('../../assets/image/logo_janreco.jpg')} style={styles.topLogo}/>
+        <View style={styles.inputBox}>
+          <Icon name="md-person" style={styles.icon} />
+          <TextInput style={styles.input} placeholder="User Name" placeholderTextColor='#f5e1da' autoCorrect={false}　autoCapitalize="none"/>
+        </View>
+        <View style={styles.inputBox}>
+          <Icon name="ios-lock" style={styles.icon} />
+          <TextInput style={styles.input} placeholder="Password" placeholderTextColor='#f5e1da' autoCorrect={false}　autoCapitalize="none" secureTextEntry />
+        </View>
+        <Button title='Sign In' style={styles.button} />
+        <Text style={styles.forotPw}>Forgot Password?</Text>
+        <Text style={styles.newAccount}>New Account</Text>
       </View>
-      <View style={styles.inputBox}>
-        <Icon name="ios-lock" style={styles.icon} />
-        <TextInput style={styles.input} placeholder="Password" placeholderTextColor='#f5e1da' autoCorrect={false}　autoCapitalize="none" secureTextEntry />
-      </View>
-      <Button title='Sign In' style={styles.button} />
-      <Text style={styles.forotPw}>Forgot Password?</Text>
-      <Text style={styles.newAccount}>New Account</Text>
-    </View>
-  );
+    );
+  }
 }
-}
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
