@@ -1,40 +1,67 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-class ScoreList extends React.Component {
-  constructor(){
+export default class ScoreList extends React.Component {
+  constructor() {
     super();
     this.state = {
-      name: null,
-      score: null,
-      err:null,
+      data: null,
+      loaded: true,
+      error: null
     }
   }
-  baseURL: 'http://myjson.com/13zb85';
-  getDate = (ev) => {
-    let req = new Request (url,{
+  baseURL = 'https://api.myjson.com';
+  getData = (ev)=> {
+    this.setState({loaded:false, error:null});
+    let url = this.baseURL + '/bins/8gh25';
+    let h = new Headers();
+    let req = new Request(url, {
+      hedaers: h,
       method: 'GET'
     });
     fetch(req)
     .then(response => response.json())
     .then(this.showData)
-    .cathch(this.badStuff)
+    .catch(this.badStuff)
   }
-  showData = (data) => {
-    console.log(data);
+  showData = (data) =>{
+    this.setState({loaded:true, data});
   }
-  badStuff = (err) =>{
-    this.setState({error: err.message});
+  badStuff = (err) => {
+    this.setState({loaded:true, error:err.message});
+  }
+  componentDidMount(){
   }
   render() {
-    const {teamName, times, date, score } = this.props.socreList
     return (
       <View style={styles.scorelist}>
         <View>
-          <Text style={styles.scorelist_name}>チーム 中学</Text>
-          <Text style={styles.scorelist_info}>試合数3回・2019/07/21 17:21</Text>
+            {this.state.data && this.state.data.length > 0 && (
+              this.state.data.map( responseJson => (
+                <Text key={responseJson.id} style={styles.scorelist_name}>
+                  チーム{ responseJson.name }
+                </Text>
+              ))
+            )}
+            {this.state.data && this.state.data.length > 0 && (
+              this.state.data.map( responseJson => (
+                <Text key={responseJson.id} style={styles.scorelist_info}>
+                  試合数{ responseJson.times }回・{responseJson.date}
+                </Text>
+              ))
+            )}
         </View>
-        <Text style={styles.scorelist_score}>50点</Text>
+        <Button title="Get Data" onPress={this.getData} />
+        {this.state.error && (
+          <Text style={styles.menu_title}>{this.state.error}</Text>
+        )}
+        {this.state.data && this.state.data.length > 0 && (
+          this.state.data.map( responseJson => (
+            <Text key={responseJson.id} style={styles.scorelist_score}>
+              {responseJson.score}点
+            </Text>
+          ))
+        )}
       </View>
     );
   }
@@ -66,5 +93,3 @@ const styles = StyleSheet.create({
     color: '#787c7b',
   },
 });
-
-export default ScoreList;
