@@ -1,82 +1,45 @@
-import React from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, View, Text, Button, ScrollView } from 'react-native';
+
+import ScoreList from '../components/ScoreList';
 import CircleButton from '../elements/CircleButton';
 
-export default class ScoreListScreen extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      data: null,
-      loaded: true,
-      error: null
-    }
-  }
-  baseURL = 'https://api.myjson.com';
-  getData = (ev)=> {
-    this.setState({loaded:false, error:null});
-    let url = this.baseURL + '/bins/8gh25';
-    let h = new Headers();
-    let req = new Request(url, {
-      hedaers: h,
-      method: 'GET'
+export default class ScoreListScreen extends Component {
+  state = { table_info: []};
+
+  componentWillMount() {
+    return fetch('https://api.myjson.com/bins/1bhw4d')
+    .then((response) => response.json())
+    .then((responseJson) => {
+    this.setState({
+      table_info: responseJson.table_info,
+      user_id: responseJson.user_id
     });
-    fetch(req)
-    .then(response => response.json())
-    .then(this.showData)
-    .catch(this.badStuff)
-  }
-  showData = (data) =>{
-    this.setState({loaded:true, data});
-  }
-  badStuff = (err) => {
-    this.setState({loaded:true, error:err.message});
-  }
-  componentDidMount(){
+  })
+  .catch((error) =>{
+        console.error(error);
+      });
   }
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <View style={styles.menu}>
-          <Text style={styles.menu_title}>すべて</Text>
-          <Text style={styles.menu_title}>チーム一覧</Text>
-        </View>
-        <View style={styles.scorelist}>
-          <View>
-            {this.state.data && this.state.data.length > 0 && (
-                this.state.data.map( responseJson => (
-                  <Text key={responseJson.id} style={styles.scorelist_name}>
-                    チーム{ responseJson.name }
-                  </Text>
-                ))
-              )}
-              {this.state.data && this.state.data.length > 0 && (
-                this.state.data.map( responseJson => (
-                  <Text key={responseJson.id} style={styles.scorelist_info}>
-                    試合数{ responseJson.times }回・{responseJson.date}
-                  </Text>
-                ))
-              )}
-          </View>
-          {this.state.error && (
-            <Text style={styles.menu_title}>{this.state.error}</Text>
-          )}
-          {this.state.data && this.state.data.length > 0 && (
-            this.state.data.map( responseJson => (
-              <Text key={responseJson.id} style={styles.scorelist_score}>
-                {responseJson.score}点
-              </Text>
-            ))
-          )}
-        </View>
-        <Button title="Get Data" onPress={this.getData} />
-        <CircleButton />
-        { !this.state.loaded && (
-          <Text>LOADING</Text>
-        )}
+renderScoreLists(){
+  return this.state.table_info.map(info =>
+    <ScoreList key={info.table_id} info={info} />
+  );
+}
+render(){
+  return(
+    <View style={styles.container}>
+      <View style={styles.menu}>
+        <Text style={styles.menu_title}>すべて</Text>
+        <Text style={styles.menu_title}>チーム一覧</Text>
       </View>
-    );
-  }
+      <ScrollView>
+        {this.renderScoreLists()}
+      </ScrollView>
+      <CircleButton />
+    </View>
+  );
+}
 }
 const styles = StyleSheet.create({
   container: {
