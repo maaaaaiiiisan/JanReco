@@ -26,6 +26,7 @@ renderScoreLists(){
     <ScoreList key={info.table_id} info={info} />
   );
 }
+
 render(){
   return(
     <View style={styles.container}>
@@ -71,7 +72,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   scorelist_name: {
-    fontSize: 20,
+    fontSize: 16,
     paddingBottom: 5,
   },
   scorelist_score: {
