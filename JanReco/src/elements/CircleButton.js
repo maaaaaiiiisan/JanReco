@@ -16,12 +16,18 @@ class CircleButton extends React.Component {
   render () {
     return (
       <View>
-        <TouchableHighlight style={styles.container}　onPress={this.toggleModal}>
+        <TouchableHighlight style={styles.container}　onPress={() => this.setState({ isModalVisible: 'bottom' })}>
           <View style={styles.circleButton}>
             <Icon name="filter"  style={styles.circleButtonTitle}/>
           </View>
         </TouchableHighlight>
-        <Modal isVisible={this.state.isModalVisible}  onBackdropPress={() => this.setState({ isModalVisible: false })} >
+        <Modal
+
+          onBackdropPress={() => this.setState({ isModalVisible: false })}
+          isVisible={this.state.isModalVisible === 'bottom'}
+          onSwipeComplete={() => this.setState({ visibleModal: null })}
+          swipeDirection={['up', 'left', 'right', 'down']}
+          style={styles.bottomModal}>
           <View style={styles.modal}  >
             <Text style={styles.modalTitle}>期間で絞り込む</Text>
           </View>
@@ -58,6 +64,10 @@ const styles = StyleSheet.create({
   modal: {
     backgroundColor: '#fff',
     flex: 0.3,
+  },
+  bottomModal: {
+    justifyContent: 'flex-end',
+    margin: 0,
   },
   modalTitle: {
     fontSize: 20,
