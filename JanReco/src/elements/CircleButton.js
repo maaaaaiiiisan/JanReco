@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Button, View, Text, TouchableHighlight } from 'react-native';
+import { StyleSheet, Button, View, Text, TouchableHighlight, } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import Modal from "react-native-modal";
 
@@ -23,7 +23,7 @@ class CircleButton extends React.Component {
         </TouchableHighlight>
         <Modal isVisible={this.state.isModalVisible}  onBackdropPress={() => this.setState({ isModalVisible: false })} >
           <View style={styles.modal}  >
-            <Text>期間で絞り込む</Text>
+            <Text style={styles.modalTitle}>期間で絞り込む</Text>
           </View>
         </Modal>
       </View>
@@ -58,6 +58,11 @@ const styles = StyleSheet.create({
   modal: {
     backgroundColor: '#fff',
     flex: 0.3,
+  },
+  modalTitle: {
+    fontSize: 20,
+    textAlign: 'center',
+    paddingTop: 13,
   }
 });
 export default CircleButton;
