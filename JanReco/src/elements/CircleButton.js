@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet, Button, View, Text, TouchableHighlight, } from 'react-native';
 import ScoreList from '../components/ScoreList';
-import ModalRadio from '../components/ModalRadio';
 import Icon from 'react-native-vector-icons/Feather';
 import Modal from "react-native-modal";
+import ModalRadio from '../components/ModalRadio';
 
 
 export default class CircleButton extends React.Component {
@@ -33,7 +33,7 @@ export default class CircleButton extends React.Component {
           onSwipeComplete={() => this.setState({ visibleModal: null })}
           swipeDirection={['up', 'left', 'right', 'down']}
           style={styles.bottomModal}>
-          <ModalRadio />
+          // <ModalRadio />
         </Modal>
       </View>
     );

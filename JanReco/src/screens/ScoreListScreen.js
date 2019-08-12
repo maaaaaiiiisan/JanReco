@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, Button, ScrollView } from 'react-native';
 
 import ScoreList from '../components/ScoreList';
 import CircleButton from '../elements/CircleButton';
+import ModalRadio from '../components/ModalRadio';
 
 export default class ScoreListScreen extends Component {
   state = { table_info: []};
@@ -26,6 +27,11 @@ renderScoreLists(){
     <ScoreList key={info.table_id} info={info} />
   );
 }
+renderModalRadio(){
+  return this.state.table_info.map(radioInfo =>
+    <ModalRadio key={radioInfo.table_id} radioInfo={radioInfo} />
+  );
+}
 
 render(){
   return(
@@ -38,6 +44,7 @@ render(){
         {this.renderScoreLists()}
       </ScrollView>
       <CircleButton />
+        {this.renderModalRadio()}
     </View>
   );
 }
