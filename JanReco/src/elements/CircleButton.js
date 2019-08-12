@@ -1,9 +1,19 @@
 import React from 'react';
 import { StyleSheet, Button, View, Text, TouchableHighlight, } from 'react-native';
+import ScoreList from '../components/ScoreList';
 import Icon from 'react-native-vector-icons/Feather';
 import Modal from "react-native-modal";
 
-class CircleButton extends React.Component {
+import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
+
+var radio_props = [
+  { label: '2019年7月', value: 0}
+];
+
+export default class CircleButton extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
   state = {
     isModalVisible: false
@@ -22,7 +32,6 @@ class CircleButton extends React.Component {
           </View>
         </TouchableHighlight>
         <Modal
-
           onBackdropPress={() => this.setState({ isModalVisible: false })}
           isVisible={this.state.isModalVisible === 'bottom'}
           onSwipeComplete={() => this.setState({ visibleModal: null })}
@@ -30,6 +39,7 @@ class CircleButton extends React.Component {
           style={styles.bottomModal}>
           <View style={styles.modal}  >
             <Text style={styles.modalTitle}>期間で絞り込む</Text>
+            <RadioForm style={styles.modalRadio} radio_prop={this.props.info.date} />
           </View>
         </Modal>
       </View>
@@ -73,6 +83,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     paddingTop: 13,
+  },
+  modalRadio: {
+    paddingTop: 15,
+    paddingLeft: 20,
+    paddingRight: 20,
   }
 });
-export default CircleButton;
