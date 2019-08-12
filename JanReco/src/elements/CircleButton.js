@@ -1,15 +1,10 @@
 import React from 'react';
 import { StyleSheet, Button, View, Text, TouchableHighlight, } from 'react-native';
 import ScoreList from '../components/ScoreList';
+import ModalRadio from '../components/ModalRadio';
 import Icon from 'react-native-vector-icons/Feather';
 import Modal from "react-native-modal";
 
-import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
-
-var radio_props = [
-  { label: '2019年7月', value: 0},
-  { label: '2019年7月', value: 1},
-];
 
 export default class CircleButton extends React.Component {
   constructor(props) {
@@ -38,10 +33,7 @@ export default class CircleButton extends React.Component {
           onSwipeComplete={() => this.setState({ visibleModal: null })}
           swipeDirection={['up', 'left', 'right', 'down']}
           style={styles.bottomModal}>
-          <View style={styles.modal}  >
-            <Text style={styles.modalTitle}>期間で絞り込む</Text>
-            <RadioForm style={styles.modalRadio} radio_props={radio_props} />
-          </View>
+          <ModalRadio />
         </Modal>
       </View>
     );
@@ -72,22 +64,8 @@ const styles = StyleSheet.create({
     fontSize: 35,
     color: '#40A698',
   },
-  modal: {
-    backgroundColor: '#fff',
-    flex: 0.3,
-  },
   bottomModal: {
     justifyContent: 'flex-end',
     margin: 0,
   },
-  modalTitle: {
-    fontSize: 20,
-    textAlign: 'center',
-    paddingTop: 13,
-  },
-  modalRadio: {
-    paddingTop: 15,
-    paddingLeft: 20,
-    paddingRight: 20,
-  }
 });
