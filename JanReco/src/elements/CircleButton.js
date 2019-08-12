@@ -7,7 +7,8 @@ import Modal from "react-native-modal";
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 
 var radio_props = [
-  { label: '2019年7月', value: 0}
+  { label: '2019年7月', value: 0},
+  { label: '2019年7月', value: 1},
 ];
 
 export default class CircleButton extends React.Component {
@@ -39,7 +40,7 @@ export default class CircleButton extends React.Component {
           style={styles.bottomModal}>
           <View style={styles.modal}  >
             <Text style={styles.modalTitle}>期間で絞り込む</Text>
-            <RadioForm style={styles.modalRadio} radio_prop={this.props.info.date} />
+            <RadioForm style={styles.modalRadio} radio_props={radio_props} />
           </View>
         </Modal>
       </View>
