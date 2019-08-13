@@ -15,7 +15,7 @@ export default class ModalRadio extends Component {
         <TouchableOpacity style={styles.modalButton}
           onPress={() => {
             this.setState({
-              value:true,
+              value: true,
             });
           }}>
           {this.state.value === false && <View style={styles.modalButtonUnchecked} />}

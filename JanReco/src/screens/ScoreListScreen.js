@@ -27,11 +27,7 @@ renderScoreLists(){
     <ScoreList key={info.table_id} info={info} />
   );
 }
-renderModalRadio(){
-  return this.state.table_info.map(radioInfo =>
-    <ModalRadio key={radioInfo.table_id} radioInfo={radioInfo} />
-  );
-}
+
 
 render(){
   return(
@@ -44,10 +40,6 @@ render(){
         {this.renderScoreLists()}
       </ScrollView>
       <CircleButton />
-        <View style={styles.modal}  >
-          <Text style={styles.modalTitle}>期間で絞り込む</Text>
-        {this.renderModalRadio()}
-      </View>
     </View>
   );
 }
@@ -93,14 +85,5 @@ const styles = StyleSheet.create({
   },
   scorelist_info: {
     color: '#787c7b',
-  },
-  modal: {
-    backgroundColor: '#fff',
-    flex: 0.3,
-  },
-  modalTitle: {
-    fontSize: 20,
-    textAlign: 'center',
-    paddingTop: 13,
   },
 });

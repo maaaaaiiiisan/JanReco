@@ -19,6 +19,28 @@ export default class CircleButton extends React.Component {
     this.setState({ isModalVisible: !this.state.isModalVisible });
   };
 
+  state = { table_info: []};
+
+  componentWillMount() {
+    return fetch('https://api.myjson.com/bins/1bhw4d')
+    .then((response) => response.json())
+    .then((responseJson) => {
+    this.setState({
+      table_info: responseJson.table_info,
+      user_id: responseJson.user_id
+    });
+  })
+  .catch((error) =>{
+        console.error(error);
+      });
+  }
+
+  renderModalRadio(){
+    return this.state.table_info.map(radioInfo =>
+      <ModalRadio key={radioInfo.table_id} radioInfo={radioInfo} />
+    );
+  }
+
   render () {
     return (
       <View>
@@ -33,7 +55,10 @@ export default class CircleButton extends React.Component {
           onSwipeComplete={() => this.setState({ visibleModal: null })}
           swipeDirection={['up', 'left', 'right', 'down']}
           style={styles.bottomModal}>
-          // <ModalRadio />
+          <View style={styles.modal}  >
+            <Text style={styles.modalTitle}>期間で絞り込む</Text>
+            {this.renderModalRadio()}
+          </View>
         </Modal>
       </View>
     );
@@ -67,5 +92,14 @@ const styles = StyleSheet.create({
   bottomModal: {
     justifyContent: 'flex-end',
     margin: 0,
+  },
+  modal: {
+    backgroundColor: '#fff',
+    flex: 0.3,
+  },
+  modalTitle: {
+    fontSize: 20,
+    textAlign: 'center',
+    paddingTop: 13,
   },
 });
