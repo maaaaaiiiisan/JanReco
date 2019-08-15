@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { RadioButton } from 'react-native-paper';
 
 export default class ModalRadio extends Component {
   constructor(props) {
@@ -10,21 +11,23 @@ export default class ModalRadio extends Component {
   }
 
   render() {
+    const { value } = this.state;
     return(
       <View style={styles.modalRadio} key={this.props.radioInfo.table_id}>
-        <TouchableOpacity style={styles.modalButton}
+        <RadioButton
+          value="first"
+          style={styles.modalButtonUnchecked}
           onPress={() => {
             this.setState({
-              value: true,
+              value: this.props.radioInfo.table_id,
             });
           }}>
           {this.state.value === false && <View style={styles.modalButtonUnchecked} />}
-          {this.state.value === true && <View style={styles.modalButtonChecked} />}
-
+          {this.state.value === this.props.radioInfo.table_id && <View style={styles.modalButtonChecked} />}
           <Text style={styles.modalText}>
             { this.props.radioInfo.date }
           </Text>
-        </TouchableOpacity>
+        </RadioButton>
       </View>
       );
     }
@@ -36,6 +39,8 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 20,
     flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   modalButton: {
 
@@ -52,16 +57,19 @@ const styles = StyleSheet.create({
     marginRight: 15,
   },
   modalButtonChecked: {
-    flexDirection: 'row',
     width: 14,
     height: 14,
     borderRadius: 7,
     backgroundColor: '#40A698',
     alignItems: 'center',
     justifyContent: 'center',
-    marginLeft: 9,
+    marginLeft: 10,
+    marginRight: 15,
   },
   modalText: {
     fontSize: 15,
+    width: 100,
+    marginLeft: 150,
+    lineHeight: 15,
   },
 });
