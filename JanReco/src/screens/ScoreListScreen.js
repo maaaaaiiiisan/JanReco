@@ -33,8 +33,8 @@ render(){
   return(
     <View style={styles.container}>
       <View style={styles.menu}>
-        <Text style={styles.menu_title}>すべて</Text>
-        <Text style={styles.menu_title}>チーム一覧</Text>
+        <Button style={styles.menu_title} title="すべて" color="#000000" />
+        <Button style={styles.menu_title} title="チーム一覧" color="#000000" />
       </View>
       <ScrollView>
         {this.renderScoreLists()}
@@ -54,13 +54,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     flexDirection: 'row',
     height: 60,
+    paddingTop: 15,
+    paddingLeft: 10,
     borderColor: '#787c7b',
     borderBottomWidth: 1,
-  },
-  menu_title: {
-    padding: 20,
-    fontWeight: '400',
-    color: '#313131',
+    fontWeight: 'bold',
   },
   scorelist: {
     backgroundColor: '#fff',
