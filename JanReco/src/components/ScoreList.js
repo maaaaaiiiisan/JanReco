@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 export default class ScoreList extends Component {
   constructor(props) {
@@ -8,7 +8,7 @@ export default class ScoreList extends Component {
 
   render() {
     return (
-      <View style={styles.scorelist}>
+      <TouchableOpacity style={styles.scorelist} activeOpacity={0.7}>
         <View>
           <Text style={styles.scorelist_name}>
             チーム
@@ -31,7 +31,7 @@ export default class ScoreList extends Component {
           { this.props.info.my_info.rank }
         </Text>
       </View>
-      </View>
+      </TouchableOpacity>
     );
   }
 }

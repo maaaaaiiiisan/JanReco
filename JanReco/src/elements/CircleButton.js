@@ -44,7 +44,7 @@ export default class CircleButton extends React.Component {
   render () {
     return (
       <View>
-        <TouchableHighlight style={styles.container}　onPress={() => this.setState({ isModalVisible: 'bottom' })}>
+        <TouchableHighlight style={styles.container}　underlayColor="transparent" onPress={() => this.setState({ isModalVisible: 'bottom' })}>
           <View style={styles.circleButton}>
             <Icon name="filter"  style={styles.circleButtonTitle}/>
           </View>
