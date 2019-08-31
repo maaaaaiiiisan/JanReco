@@ -1,15 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
+import { StackNavigator } from "react-navigation";
 
-export default class ScoreList extends Component {
+class ScoreList extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
     return (
-      <TouchableOpacity style={styles.scorelist} activeOpacity={0.7}>
+      <TouchableOpacity
+        style={styles.scorelist}
+        activeOpacity={0.7}
+        onPress={() => { this.props.navigation.navigate('ScoreInfo')}}
+      >
         <View>
           <Text style={styles.scorelist_name}>
             チーム
@@ -67,3 +72,5 @@ const styles = StyleSheet.create({
     color: '#787c7b',
   },
 });
+
+export default ScoreList;

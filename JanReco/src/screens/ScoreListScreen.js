@@ -24,7 +24,7 @@ export default class ScoreListScreen extends Component {
 
 renderScoreLists(){
   return this.state.table_info.map(info =>
-    <ScoreList key={info.table_id} info={info} />
+    <ScoreList key={info.table_id} info={info} navigation={this.props.navigation}/>
   );
 }
 
