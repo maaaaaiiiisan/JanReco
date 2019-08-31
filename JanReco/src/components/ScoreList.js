@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/Feather';
 
 export default class ScoreList extends Component {
   constructor(props) {
@@ -31,6 +32,7 @@ export default class ScoreList extends Component {
           { this.props.info.my_info.rank }
         </Text>
       </View>
+      <Icon name="chevron-right" style={styles.moreIcon}/>
       </TouchableOpacity>
     );
   }
@@ -53,9 +55,15 @@ const styles = StyleSheet.create({
     fontSize: 18,
     alignSelf: 'flex-end',
     textAlign: 'right',
-    marginLeft: 130,
+    marginLeft: 100,
   },
   scorelist_info: {
+    color: '#787c7b',
+  },
+  moreIcon: {
+    justifyContent: 'center',
+    fontSize: 35,
+    marginLeft: 20,
     color: '#787c7b',
   },
 });
