@@ -8,8 +8,12 @@ class HomeScreen extends React.Component {
     return(
       <View>
         <Button
-          title="Go to ScoreList"
+          title="Go to ScoreListScreen"
           onPress={() => navigate('ScoreList')}
+        />
+        <Button
+          title="Go to LoginScreen"
+          onPress={() => navigate('Login')}
         />
       </View>
     );
