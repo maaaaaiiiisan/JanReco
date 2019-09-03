@@ -39,7 +39,7 @@ render(){
       <ScrollView>
         {this.renderScoreLists()}
       </ScrollView>
-      <CircleButton />
+      <CircleButton name="filter" />
     </View>
   );
 }

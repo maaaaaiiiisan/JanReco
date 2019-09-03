@@ -1,23 +1,31 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
+import CircleButton from '../elements/CircleButton';
+
 class ScoreInfoScreen extends React.Component {
-  render(){
+  render() {
     return(
-      <View style={styles.teamInfo}>
-        <View>
-          <Text style={styles.teamName}>チーム中学</Text>
+      <View style={styles.container}>
+        <View style={styles.teamInfo}>
+          <View>
+            <Text style={styles.teamName}>チーム中学</Text>
+          </View>
+          <View style={styles.teamDetail}>
+            <Text>ID：ABC123</Text>
+            <Text>2019/07/21</Text>
+          </View>
         </View>
-        <View style={styles.teamDetail}>
-          <Text>ID：ABC123</Text>
-          <Text>2019/07/21</Text>
-        </View>
+        <CircleButton name="edit" />
       </View>
-      
     );
   }
 }
 const styles= StyleSheet.create({
+  container: {
+    flex: 1,
+    width: '100%',
+  },
   teamInfo: {
     flexDirection: 'row',
   },

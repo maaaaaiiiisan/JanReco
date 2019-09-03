@@ -5,7 +5,6 @@ import Icon from 'react-native-vector-icons/Feather';
 import Modal from "react-native-modal";
 import ModalRadio from '../components/ModalRadio';
 
-
 export default class CircleButton extends React.Component {
   constructor(props) {
     super(props);
@@ -42,11 +41,13 @@ export default class CircleButton extends React.Component {
   }
 
   render () {
+    const { name } = this.props;
+
     return (
       <View>
         <TouchableHighlight style={styles.container}　underlayColor="transparent" onPress={() => this.setState({ isModalVisible: 'bottom' })}>
           <View style={styles.circleButton}>
-            <Icon name="filter"  style={styles.circleButtonTitle}/>
+            <Icon name={name}  style={styles.circleButtonTitle}/>
           </View>
         </TouchableHighlight>
         <Modal
