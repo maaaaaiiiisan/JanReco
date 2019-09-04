@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Button, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, Button, ScrollView, Image, TouchableOpacity } from 'react-native';
 
 import ScoreList from '../components/ScoreList';
 import CircleButton from '../elements/CircleButton';
 import ModalRadio from '../components/ModalRadio';
+import Icon from 'react-native-vector-icons/Feather';
 
 export default class ScoreListScreen extends Component {
   state = { table_info: []};
@@ -30,11 +31,24 @@ renderScoreLists(){
 
 
 render(){
+  const {navigate} = this.props.navigation;
   return(
     <View style={styles.container}>
+      <View style={styles.profile}>
+        <Image style={styles.profilePhoto} source={require('../../assets/image/profile.png')} />
+        <View>
+          <Text style={styles.profileName}>Mai</Text>
+        </View>
+      </View>
       <View style={styles.menu}>
-        <Button style={styles.menu_title} title="すべて" color="#000000" />
-        <Button style={styles.menu_title} title="チーム一覧" color="#000000" />
+        <TouchableOpacity style={styles.menu_title}>
+          <Icon style={styles.menu_icon}　name="activity" />
+          <Text style={styles.menu_text}>アクティビティ</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.menu_title}  onPress={() => navigate('TeamList')}>
+          <Icon style={styles.menu_icon}　name="user-plus" />
+          <Text style={styles.menu_text}>チーム</Text>
+        </TouchableOpacity>
       </View>
       <ScrollView>
         {this.renderScoreLists()}
@@ -50,15 +64,44 @@ const styles = StyleSheet.create({
     backgroundColor: '#c7d8d8',
     width: '100%',
   },
+  profile: {
+    paddingTop: 20,
+    height: 100,
+    flexDirection: 'row',
+    backgroundColor: '#fff',
+  },
+  profilePhoto: {
+    height: 80,
+    width: 80,
+  },
+  profileName: {
+    padding: 20,
+    fontSize: 20,
+    fontWeight: '400',
+  },
   menu: {
     backgroundColor: '#fff',
     flexDirection: 'row',
-    height: 60,
     paddingTop: 15,
     paddingLeft: 10,
     borderColor: '#787c7b',
     borderBottomWidth: 1,
     fontWeight: 'bold',
+  },
+  menu_text: {
+    fontSize: 13,
+  },
+  menu_title: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 15,
+    marginBottom: 10,
+    width: '50%',
+  },
+  menu_icon: {
+    fontSize: 30,
+    color: '#40A698',
+    marginBottom: 5,
   },
   scorelist: {
     backgroundColor: '#fff',
