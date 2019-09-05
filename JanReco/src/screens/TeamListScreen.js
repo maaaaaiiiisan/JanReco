@@ -1,15 +1,17 @@
 import React from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
+import { StyleSheet, View, Text, Button, ScrollView, Image, TouchableOpacity } from 'react-native';
+import TabNavigation from '../components/TabNavigation';
+
 
 class TeamListScreen extends React.Component {
   render(){
     return (
       <View style={styles.container}>
+        <TabNavigation navigation={this.props.navigation}　/>
         <View style={styles.menu}>
-          <Button style={styles.menu_title} title="参加卓" color="#000000" />
           <Button
             style={styles.menu_title}
-            title="チーム一覧"
+            title="チーム中学"
             color="#000000"
             onPress={() => navigate('TeamList')}
           />
@@ -27,13 +29,13 @@ const styles = StyleSheet.create({
   },
   menu: {
     backgroundColor: '#fff',
-    flexDirection: 'row',
     height: 60,
     paddingTop: 15,
     paddingLeft: 10,
     borderColor: '#787c7b',
     borderBottomWidth: 1,
     fontWeight: 'bold',
+    justifyContent: 'flex-start',
   },
 });
 export default TeamListScreen;
