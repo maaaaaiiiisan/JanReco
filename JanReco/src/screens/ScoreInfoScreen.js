@@ -1,11 +1,13 @@
 import React from 'react';
 import { StyleSheet, View, Text, ListView } from 'react-native';
 import CircleButton from '../elements/CircleButton';
+import TabNavigation from '../components/TabNavigation';
 
 class ScoreInfoScreen extends React.Component {
   render() {
     return(
       <View style={styles.container}>
+        <TabNavigation navigation={this.props.navigation}　/>
         <View style={styles.info}>
           <View style={styles.teamInfo}>
             <Text style={styles.teamName}>チーム中学</Text>

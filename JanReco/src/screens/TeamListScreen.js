@@ -1,21 +1,20 @@
 import React from 'react';
 import { StyleSheet, View, Text, Button, ScrollView, Image, TouchableOpacity } from 'react-native';
 import TabNavigation from '../components/TabNavigation';
+import CircleButton from '../elements/CircleButton';
+import Icon from 'react-native-vector-icons/Feather';
 
 
 class TeamListScreen extends React.Component {
-  render(){
+  render() {
     return (
       <View style={styles.container}>
         <TabNavigation navigation={this.props.navigation}　/>
-        <View style={styles.menu}>
-          <Button
-            style={styles.menu_title}
-            title="チーム中学"
-            color="#000000"
-            onPress={() => navigate('TeamList')}
-          />
-        </View>
+          <TouchableOpacity style={styles.team} onPress={() => navigate('TeamList')}>
+            <Text style={styles.teamName}>チーム中学</Text>
+            <Icon name="menu"  style={styles.teamIcon}/>
+          </TouchableOpacity>
+        <CircleButton name="plus" />
       </View>
     );
   }
@@ -27,7 +26,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#c7d8d8',
     width: '100%',
   },
-  menu: {
+  team: {
+    flex: 1,
+    flexDirection: 'row',
     backgroundColor: '#fff',
     height: 60,
     paddingTop: 15,
@@ -36,6 +37,15 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     fontWeight: 'bold',
     justifyContent: 'flex-start',
+  },
+  teamName: {
+    width: 250,
+  },
+  teamIcon: {
+    justifyContent: 'center',
+    fontSize: 35,
+    marginLeft: 20,
+    color: '#787c7b',
   },
 });
 export default TeamListScreen;

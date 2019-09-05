@@ -13,8 +13,9 @@ export default class TabNavigation extends Component {
       <View>
           <View style={styles.profile}>
             <Image style={styles.profilePhoto} source={require('../../assets/image/profile.png')} />
-            <View>
+            <View style={styles.profileRight}>
               <Text style={styles.profileName}>Mai</Text>
+              <Icon name="settings" style={styles.profileSetting} />
             </View>
           </View>
           <View style={styles.menu}>
@@ -48,10 +49,21 @@ const styles = StyleSheet.create({
     height: 80,
     width: 80,
   },
+  profileRight: {
+    flexDirection: 'row',
+  },
   profileName: {
     padding: 20,
     fontSize: 20,
     fontWeight: '400',
+    width: 230,
+  },
+  profileSetting: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: 35,
+    color: '#787c7b',
+    marginTop: 15,
   },
   menu: {
     backgroundColor: '#fff',
