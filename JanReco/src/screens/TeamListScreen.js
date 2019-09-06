@@ -3,27 +3,46 @@ import { StyleSheet, View, Text, Button, ScrollView, Image, TouchableOpacity } f
 import TabNavigation from '../components/TabNavigation';
 import CircleButton from '../elements/CircleButton';
 import Icon from 'react-native-vector-icons/Feather';
+import Modal from "react-native-modal";
 
 
 class TeamListScreen extends React.Component {
+  state = {
+    isModalVisible: false
+  };
+
+  toggleModal = () => {
+    this.setState({ isModalVisible: !this.state.isModalVisible });
+  };
+
   render() {
     return (
       <View style={styles.container}>
         <TabNavigation navigation={this.props.navigation}　/>
-          <View>
-            <Text style={styles.title}>招待されているチーム</Text>
-          </View>
-          <TouchableOpacity style={styles.teamInvited} onPress={() => navigate('TeamList')}>
-            <Text style={styles.teamName}>チーム高校</Text>
-          </TouchableOpacity>
-          <View>
-            <Text style={styles.title}>参加済みチーム</Text>
-          </View>
-          <TouchableOpacity style={styles.team} onPress={() => navigate('TeamList')}>
-            <Text style={styles.teamName}>チーム中学</Text>
-            <Icon name="menu"  style={styles.teamIcon}/>
-          </TouchableOpacity>
+        <View>
+          <Text style={styles.title}>招待されているチーム</Text>
+        </View>
+        <TouchableOpacity style={styles.team} onPress={() => this.setState({ isModalVisible: 'bottom' })}>
+          <Text style={styles.teamName}>チーム高校</Text>
+        </TouchableOpacity>
+        <View>
+          <Text style={styles.title}>参加済みチーム</Text>
+        </View>
+        <TouchableOpacity style={styles.team} onPress={() => navigate('TeamList')}>
+          <Text style={styles.teamName}>チーム中学</Text>
+          <Icon name="menu"  style={styles.teamIcon}/>
+        </TouchableOpacity>
         <CircleButton name="plus" />
+          <Modal
+            onBackdropPress={() => this.setState({ isModalVisible: false })}
+            isVisible={this.state.isModalVisible === 'bottom'}
+            onSwipeComplete={() => this.setState({ visibleModal: null })}
+            swipeDirection={['up', 'left', 'right', 'down']}
+            style={styles.bottomModal}>
+            <View style={styles.modal}  >
+              <Text style={styles.modalTitle}>チームに参加しますか</Text>
+            </View>
+          </Modal>
       </View>
     );
   }
@@ -33,7 +52,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#c7d8d8',
-    width: '100%',
   },
   title: {
     padding: 5,
@@ -41,18 +59,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#E5E5E5',
   },
   team: {
-    flex: 1,
     flexDirection: 'row',
-    backgroundColor: '#fff',
-    paddingTop: 15,
-    paddingLeft: 10,
-    paddingBottom: 15,
-    borderColor: '#787c7b',
-    borderBottomWidth: 1,
-    fontWeight: 'bold',
-    justifyContent: 'flex-start',
-  },
-  teamInvited: {
     backgroundColor: '#fff',
     paddingTop: 15,
     paddingLeft: 10,
@@ -71,6 +78,19 @@ const styles = StyleSheet.create({
     fontSize: 25,
     marginLeft: 20,
     color: '#787c7b',
+  },
+  bottomModal: {
+    justifyContent: 'flex-end',
+    margin: 0,
+  },
+  modal: {
+    backgroundColor: '#fff',
+    flex: 0.3,
+  },
+  modalTitle: {
+    fontSize: 20,
+    textAlign: 'center',
+    paddingTop: 13,
   },
 });
 export default TeamListScreen;
