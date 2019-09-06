@@ -11,60 +11,34 @@ export default class TabNavigation extends Component {
   render() {
     return(
       <View>
-          <View style={styles.profile}>
-            <Image style={styles.profilePhoto} source={require('../../assets/image/profile.png')} />
-            <View style={styles.profileRight}>
-              <Text style={styles.profileName}>Mai</Text>
-              <Icon name="settings" style={styles.profileSetting} />
-            </View>
-          </View>
-          <View style={styles.menu}>
-            <TouchableOpacity
+        <View style={styles.menu}>
+          <TouchableOpacity
               style={[styles.menu_title, styles.selected_menu_title]}
               onPress={() => { this.props.navigation.navigate('ScoreList')}}
             >
               <Icon style={styles.menu_icon}　name="activity" />
               <Text style={styles.menu_text}>アクティビティ</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
+          </TouchableOpacity>
+          <TouchableOpacity
               style={styles.menu_title}
               onPress={() => { this.props.navigation.navigate('TeamList')}}
             >
               <Icon style={styles.menu_icon}　name="user-plus" />
               <Text style={styles.menu_text}>チーム</Text>
-            </TouchableOpacity>
-          </View>
+          </TouchableOpacity>
+          <TouchableOpacity
+              style={styles.menu_title}
+              onPress={() => { this.props.navigation.navigate('Profile')}}
+            >
+              <Icon style={styles.menu_icon}　name="settings" />
+              <Text style={styles.menu_text}>アカウント</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
 }
 const styles = StyleSheet.create({
-  profile: {
-    paddingTop: 20,
-    height: 100,
-    flexDirection: 'row',
-    backgroundColor: '#fff',
-  },
-  profilePhoto: {
-    height: 80,
-    width: 80,
-  },
-  profileRight: {
-    flexDirection: 'row',
-  },
-  profileName: {
-    padding: 20,
-    fontSize: 20,
-    fontWeight: '400',
-    width: 230,
-  },
-  profileSetting: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    fontSize: 35,
-    color: '#787c7b',
-    marginTop: 15,
-  },
   menu: {
     backgroundColor: '#fff',
     flexDirection: 'row',
@@ -82,7 +56,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginRight: 15,
     marginBottom: 10,
-    width: '50%',
+    width: '30%',
   },
   menu_icon: {
     fontSize: 30,
