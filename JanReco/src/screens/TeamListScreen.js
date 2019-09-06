@@ -10,6 +10,15 @@ class TeamListScreen extends React.Component {
     return (
       <View style={styles.container}>
         <TabNavigation navigation={this.props.navigation}　/>
+          <View>
+            <Text style={styles.title}>招待されているチーム</Text>
+          </View>
+          <TouchableOpacity style={styles.teamInvited} onPress={() => navigate('TeamList')}>
+            <Text style={styles.teamName}>チーム高校</Text>
+          </TouchableOpacity>
+          <View>
+            <Text style={styles.title}>参加済みチーム</Text>
+          </View>
           <TouchableOpacity style={styles.team} onPress={() => navigate('TeamList')}>
             <Text style={styles.teamName}>チーム中学</Text>
             <Icon name="menu"  style={styles.teamIcon}/>
@@ -26,24 +35,40 @@ const styles = StyleSheet.create({
     backgroundColor: '#c7d8d8',
     width: '100%',
   },
+  title: {
+    padding: 5,
+    height: 30,
+    backgroundColor: '#E5E5E5',
+  },
   team: {
     flex: 1,
     flexDirection: 'row',
     backgroundColor: '#fff',
-    height: 60,
     paddingTop: 15,
     paddingLeft: 10,
+    paddingBottom: 15,
+    borderColor: '#787c7b',
+    borderBottomWidth: 1,
+    fontWeight: 'bold',
+    justifyContent: 'flex-start',
+  },
+  teamInvited: {
+    backgroundColor: '#fff',
+    paddingTop: 15,
+    paddingLeft: 10,
+    paddingBottom: 15,
     borderColor: '#787c7b',
     borderBottomWidth: 1,
     fontWeight: 'bold',
     justifyContent: 'flex-start',
   },
   teamName: {
-    width: 250,
+    width: 280,
+    fontSize: 20,
   },
   teamIcon: {
     justifyContent: 'center',
-    fontSize: 35,
+    fontSize: 25,
     marginLeft: 20,
     color: '#787c7b',
   },

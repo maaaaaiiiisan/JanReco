@@ -23,7 +23,7 @@ export default class TabNavigation extends Component {
               style={styles.menu_title}
               onPress={() => { this.props.navigation.navigate('TeamList')}}
             >
-              <Icon style={styles.menu_icon}　name="user-plus" />
+              <Icon style={styles.menu_icon}　name="users" />
               <Text style={styles.menu_text}>チーム</Text>
           </TouchableOpacity>
           <TouchableOpacity
