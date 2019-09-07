@@ -16,6 +16,7 @@ class TeamListScreen extends React.Component {
   };
 
   render() {
+    const {navigate} = this.props.navigation;
     return (
       <View style={styles.container}>
         <TabNavigation navigation={this.props.navigation}　/>
@@ -28,7 +29,7 @@ class TeamListScreen extends React.Component {
         <View>
           <Text style={styles.title}>参加済みチーム</Text>
         </View>
-        <TouchableOpacity style={styles.team} onPress={() => navigate('TeamList')}>
+        <TouchableOpacity style={styles.team} onPress={() => navigate('TeamInfo')}>
           <Text style={styles.teamName}>チーム中学</Text>
           <Icon name="menu"  style={styles.teamIcon}/>
         </TouchableOpacity>

@@ -4,6 +4,7 @@ import LoginScreen from './src/screens/LoginScreen';
 import ScoreListScreen from './src/screens/ScoreListScreen';
 import ScoreInfoScreen from './src/screens/ScoreInfoScreen';
 import TeamListScreen from './src/screens/TeamListScreen';
+import TeamInfoScreen from './src/screens/TeamInfoScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
 
 const App = createStackNavigator({
@@ -11,6 +12,7 @@ const App = createStackNavigator({
   ScoreList: { screen: ScoreListScreen },
   ScoreInfo: { screen: ScoreInfoScreen },
   TeamList: { screen: TeamListScreen },
+  TeamInfo: { screen: TeamInfoScreen },
   Profile: { screen: ProfileScreen },
   Login: { screen: LoginScreen },
 }, {
