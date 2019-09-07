@@ -11,9 +11,10 @@ class ProfileScreen extends React.Component {
           <Image style={styles.profilePhoto} source={require('../../assets/image/profile.png')} />
           <View style={styles.profileRight}>
             <Text style={styles.profileName}>Mai</Text>
-            <Icon name="settings" style={styles.profileSetting} />
           </View>
         </View>
+        <Text>JanRecoを友人に紹介する</Text>
+        <Text>ログアウト</Text>
       </View>
     );
   }
