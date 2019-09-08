@@ -40,7 +40,7 @@ class TeamInfoScreen extends React.Component {
           onBackdropPress={() => this.setState({ isModalVisible: false })}
           onSwipeComplete={() => this.setState({ visibleModal: 'default' })}
           >
-        <ModalSelect modalTitle="チームを退会しますか"/>
+          <ModalSelect modalTitle="チームを退会しますか"/>
         </Modal>
       </View>
     );
