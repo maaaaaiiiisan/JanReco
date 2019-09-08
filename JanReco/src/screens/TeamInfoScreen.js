@@ -1,7 +1,8 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Button } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import Modal from 'react-native-modal';
+import ModalSelect from '../components/ModalSelect';
 
 class TeamInfoScreen extends React.Component {
   state = {
@@ -11,7 +12,6 @@ class TeamInfoScreen extends React.Component {
   toggleModal = () => {
     this.setState({ isModalVisible: !this.state.isModalVisible });
   };
-
   render() {
     const {navigate} = this.props.navigation;
     return (
@@ -36,13 +36,16 @@ class TeamInfoScreen extends React.Component {
           <Text style={styles.teamMenuText}>グループを退会</Text>
         </TouchableOpacity>
         <Modal
-          onBackdropPress={() => this.setState({ isModalVisible: false })}
           isVisible={this.state.isModalVisible === 'bottom'}
-          onSwipeComplete={() => this.setState({ visibleModal: null })}
-          swipeDirection={['up', 'left', 'right', 'down']}
-          style={styles.bottomModal}>
+          onBackdropPress={() => this.setState({ isModalVisible: false })}
+          onSwipeComplete={() => this.setState({ visibleModal: 'default' })}
+          >
           <View style={styles.modal}  >
             <Text style={styles.modalTitle}>チームを退会しますか</Text>
+            <View style={styles.buttonSelect}>
+              <Button title="はい" />
+              <Button title="いいえ" />
+            </View>
           </View>
         </Modal>
       </View>
@@ -81,11 +84,19 @@ const styles = StyleSheet.create({
   modal: {
     backgroundColor: '#fff',
     flex: 0.3,
+    margin: 30,
   },
   modalTitle: {
     fontSize: 20,
     textAlign: 'center',
-    paddingTop: 13,
+    paddingTop: 70,
+    paddingBottom: 15,
+  },
+  buttonSelect: {
+    flexDirection: 'row',
+    color: '#E5E5E5',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
