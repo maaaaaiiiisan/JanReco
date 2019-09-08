@@ -1,66 +1,25 @@
 import React from 'react';
 import { StyleSheet, Button, View, Text, TouchableHighlight, } from 'react-native';
-import ScoreList from '../components/ScoreList';
 import Icon from 'react-native-vector-icons/Feather';
-import Modal from "react-native-modal";
+
 import ModalRadio from '../components/ModalRadio';
 
 export default class CircleButton extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  state = {
-    isModalVisible: false
-  };
-
-  toggleModal = () => {
-    this.setState({ isModalVisible: !this.state.isModalVisible });
-  };
-
-  state = { table_info: []};
-
-  componentWillMount() {
-    return fetch('https://api.myjson.com/bins/1bhw4d')
-    .then((response) => response.json())
-    .then((responseJson) => {
-    this.setState({
-      table_info: responseJson.table_info,
-      user_id: responseJson.user_id
-    });
-  })
-  .catch((error) =>{
-        console.error(error);
-      });
-  }
-
-  renderModalRadio(){
-    return this.state.table_info.map(radioInfo =>
-      <ModalRadio key={radioInfo.table_id} radioInfo={radioInfo} />
-    );
-  }
 
   render () {
     const { name } = this.props;
+    const { onPress } = this.props;
 
     return (
       <View>
-        <TouchableHighlight style={styles.container}　underlayColor="transparent" onPress={() => this.setState({ isModalVisible: 'bottom' })}>
+        <TouchableHighlight
+          style={styles.container}
+          underlayColor="transparent"
+          onPress = { onPress } >
           <View style={styles.circleButton}>
             <Icon name={name}  style={styles.circleButtonTitle}/>
           </View>
         </TouchableHighlight>
-        <Modal
-          onBackdropPress={() => this.setState({ isModalVisible: false })}
-          isVisible={this.state.isModalVisible === 'bottom'}
-          onSwipeComplete={() => this.setState({ visibleModal: null })}
-          swipeDirection={['up', 'left', 'right', 'down']}
-          style={styles.bottomModal}>
-          <View style={styles.modal}  >
-            <Text style={styles.modalTitle}>期間で絞り込む</Text>
-            {this.renderModalRadio()}
-          </View>
-        </Modal>
       </View>
     );
   }
