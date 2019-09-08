@@ -1,8 +1,6 @@
 import React from 'react';
-import { StyleSheet, Button, View, Text, TouchableHighlight, } from 'react-native';
+import { StyleSheet, View, TouchableHighlight } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
-
-import ModalRadio from '../components/ModalRadio';
 
 export default class CircleButton extends React.Component {
 
@@ -48,18 +46,5 @@ const styles = StyleSheet.create({
   circleButtonTitle: {
     fontSize: 35,
     color: '#40A698',
-  },
-  bottomModal: {
-    justifyContent: 'flex-end',
-    margin: 0,
-  },
-  modal: {
-    backgroundColor: '#fff',
-    flex: 0.3,
-  },
-  modalTitle: {
-    fontSize: 20,
-    textAlign: 'center',
-    paddingTop: 13,
   },
 });
