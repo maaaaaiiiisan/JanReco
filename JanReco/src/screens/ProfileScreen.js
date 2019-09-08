@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
+import ListWithTitle from '../components/ListWithTitle';
 
 
 class ProfileScreen extends React.Component {
@@ -13,8 +14,7 @@ class ProfileScreen extends React.Component {
             <Text style={styles.profileName}>Mai</Text>
           </View>
         </View>
-        <Text>JanRecoを友人に紹介する</Text>
-        <Text>ログアウト</Text>
+        <ListWithTitle listTitle="設定" itemName="名前を変更" />
       </View>
     );
   }
@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
   },
   profile: {
     paddingTop: 20,
+    marginBottom: 10,
     height: 100,
     flexDirection: 'row',
     backgroundColor: '#fff',
