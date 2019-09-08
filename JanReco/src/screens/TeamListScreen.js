@@ -4,11 +4,17 @@ import TabNavigation from '../components/TabNavigation';
 import CircleButton from '../elements/CircleButton';
 import Icon from 'react-native-vector-icons/Feather';
 import Modal from "react-native-modal";
+import ModalSelect from '../components/ModalSelect';
+import ListWithTitle from '../components/ListWithTitle';
 
 
 class TeamListScreen extends React.Component {
   state = {
     isModalVisible: false
+  };
+
+  loadModal = () => {
+    this.setState({ isModalVisible: 'bottom' })
   };
 
   toggleModal = () => {
@@ -20,12 +26,11 @@ class TeamListScreen extends React.Component {
     return (
       <View style={styles.container}>
         <TabNavigation navigation={this.props.navigation}　/>
-        <View>
-          <Text style={styles.title}>招待されているチーム</Text>
-        </View>
-        <TouchableOpacity style={styles.team} onPress={() => this.setState({ isModalVisible: 'bottom' })}>
-          <Text style={styles.teamName}>チーム高校</Text>
-        </TouchableOpacity>
+        <ListWithTitle
+          listTitle="招待されているチーム"
+          itemName="チーム高校"
+          onPress={this.loadModal}
+        />
         <View>
           <Text style={styles.title}>参加済みチーム</Text>
         </View>
@@ -34,16 +39,13 @@ class TeamListScreen extends React.Component {
           <Icon name="menu"  style={styles.teamIcon}/>
         </TouchableOpacity>
         <CircleButton name="plus" />
-          <Modal
-            onBackdropPress={() => this.setState({ isModalVisible: false })}
-            isVisible={this.state.isModalVisible === 'bottom'}
-            onSwipeComplete={() => this.setState({ visibleModal: null })}
-            swipeDirection={['up', 'left', 'right', 'down']}
-            style={styles.bottomModal}>
-            <View style={styles.modal}  >
-              <Text style={styles.modalTitle}>チームに参加しますか</Text>
-            </View>
-          </Modal>
+        <Modal
+          isVisible={this.state.isModalVisible === 'bottom'}
+          onBackdropPress={() => this.setState({ isModalVisible: false })}
+          onSwipeComplete={() => this.setState({ visibleModal: 'default' })}
+          >
+          <ModalSelect modalTitle="チームに参加しますか"/>
+        </Modal>
       </View>
     );
   }

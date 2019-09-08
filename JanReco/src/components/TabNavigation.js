@@ -28,6 +28,13 @@ export default class TabNavigation extends Component {
           </TouchableOpacity>
           <TouchableOpacity
               style={styles.menu_title}
+              onPress={() => { this.props.navigation.navigate('TeamList')}}
+            >
+              <Icon style={styles.menu_icon}　name="check-circle" />
+              <Text style={styles.menu_text}>卓作成</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+              style={styles.menu_title}
               onPress={() => { this.props.navigation.navigate('Profile')}}
             >
               <Icon style={styles.menu_icon}　name="settings" />
@@ -56,7 +63,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginRight: 15,
     marginBottom: 10,
-    width: '30%',
+    width: '20%',
   },
   menu_icon: {
     fontSize: 30,
