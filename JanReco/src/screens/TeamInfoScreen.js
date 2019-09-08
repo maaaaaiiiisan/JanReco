@@ -40,13 +40,7 @@ class TeamInfoScreen extends React.Component {
           onBackdropPress={() => this.setState({ isModalVisible: false })}
           onSwipeComplete={() => this.setState({ visibleModal: 'default' })}
           >
-          <View style={styles.modal}  >
-            <Text style={styles.modalTitle}>チームを退会しますか</Text>
-            <View style={styles.buttonSelect}>
-              <Button title="はい" />
-              <Button title="いいえ" />
-            </View>
-          </View>
+        <ModalSelect modalTitle="チームを退会しますか"/>
         </Modal>
       </View>
     );
@@ -80,23 +74,6 @@ const styles = StyleSheet.create({
   bottomModal: {
     justifyContent: 'flex-end',
     margin: 0,
-  },
-  modal: {
-    backgroundColor: '#fff',
-    flex: 0.3,
-    margin: 30,
-  },
-  modalTitle: {
-    fontSize: 20,
-    textAlign: 'center',
-    paddingTop: 70,
-    paddingBottom: 15,
-  },
-  buttonSelect: {
-    flexDirection: 'row',
-    color: '#E5E5E5',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 });
 
