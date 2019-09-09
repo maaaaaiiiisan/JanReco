@@ -2,14 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
-class ListWithTitle extends React.Component {
-
-  render() {
-    const { listTitle } = this.props;
-    const { itemName } = this.props;
-    const { onPress } = this.props;
-    const { showIcon } = this.props;
-
+const ListWithTitle = ({ listTitle, onPress, itemName, showIcon }) => {
     return(
       <View style={styles.container}>
         <View>
@@ -17,11 +10,10 @@ class ListWithTitle extends React.Component {
         </View>
         <TouchableOpacity style={styles.item} onPress={ onPress }>
           <Text style={styles.itemName}>{ itemName }</Text>
-          { this.props.showIcon && <Icon name="menu"  style={styles.teamIcon}/> }
+          { showIcon && <Icon name="menu"  style={styles.teamIcon}/> }
         </TouchableOpacity>
       </View>
-    );
-  }
+  );
 }
 const styles = StyleSheet.create({
   container: {
