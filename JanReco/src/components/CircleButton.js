@@ -2,25 +2,19 @@ import React from 'react';
 import { StyleSheet, View, TouchableHighlight } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
-export default class CircleButton extends React.Component {
-
-  render () {
-    const { name } = this.props;
-    const { onPress } = this.props;
-
-    return (
-      <View>
-        <TouchableHighlight
-          style={styles.container}
-          underlayColor="transparent"
-          onPress = { onPress } >
-          <View style={styles.circleButton}>
-            <Icon name={name}  style={styles.circleButtonTitle}/>
-          </View>
-        </TouchableHighlight>
-      </View>
-    );
-  }
+const CircleButton =({ name, onPress }) => {
+  return (
+    <View>
+      <TouchableHighlight
+        style={styles.container}
+        underlayColor="transparent"
+        onPress = { onPress } >
+        <View style={styles.circleButton}>
+          <Icon name={name}  style={styles.circleButtonTitle}/>
+        </View>
+      </TouchableHighlight>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -48,3 +42,5 @@ const styles = StyleSheet.create({
     color: '#40A698',
   },
 });
+
+export default CircleButton;

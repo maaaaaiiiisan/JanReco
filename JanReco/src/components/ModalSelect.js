@@ -1,20 +1,17 @@
 import React from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
 
-class ModalSelect extends React.Component {
-  render() {
-    const { modalTitle } = this.props;
-    return(
-      <View style={styles.modal}  >
-        <Text style={styles.modalTitle}>{ modalTitle }</Text>
-        <View style={styles.buttonSelect}>
-          <Button title="はい" />
-          <Button title="いいえ" />
-        </View>
+const ModalSelect = ({ modalTitle }) => {
+  return(
+    <View style={styles.modal}  >
+      <Text style={styles.modalTitle}>{ modalTitle }</Text>
+      <View style={styles.buttonSelect}>
+        <Button title="はい" />
+        <Button title="いいえ" />
       </View>
+    </View>
     );
-  }
-}
+};
 const styles = StyleSheet.create({
   modal: {
     backgroundColor: '#fff',
