@@ -56,7 +56,7 @@ export default class ScoreListScreen extends Component {
     return(
       <View style={styles.container}>
         <TabNavigation navigation={this.props.navigation}　/>
-        <ScrollView>
+        <ScrollView style={styles.scorelist}>
           {this.renderScoreLists()}
         </ScrollView>
         <CircleButton name="filter" onPress={ this.openModal } />
@@ -83,28 +83,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   scorelist: {
-    backgroundColor: '#fff',
-    padding: 20,
-    height: 80,
-    borderColor: '#787c7b',
-    borderBottomWidth: 0.5,
-    flexDirection: 'row',
-  },
-  scorelist_firstLine: {
-    flexDirection: 'row',
-  },
-  scorelist_name: {
-    fontSize: 16,
-    paddingBottom: 5,
-  },
-  scorelist_score: {
-    fontSize: 20,
-    alignSelf: 'flex-end',
-    textAlign: 'right',
-    marginLeft: 120,
-  },
-  scorelist_info: {
-    color: '#787c7b',
+    flex: 1,
   },
   bottomModal: {
     justifyContent: 'flex-end',
