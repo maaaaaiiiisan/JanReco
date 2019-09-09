@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, Button, ScrollView, Image, TouchableOpacity } from 'react-native';
 import TabNavigation from '../components/TabNavigation';
-import CircleButton from '../elements/CircleButton';
+import CircleButton from '../components/CircleButton';
 import Icon from 'react-native-vector-icons/Feather';
 import Modal from "react-native-modal";
 import ModalSelect from '../components/ModalSelect';

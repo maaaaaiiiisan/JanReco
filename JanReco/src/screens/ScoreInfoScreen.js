@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text, ListView } from 'react-native';
-import CircleButton from '../elements/CircleButton';
+import CircleButton from '../components/CircleButton';
 import TabNavigation from '../components/TabNavigation';
 
 class ScoreInfoScreen extends React.Component {
