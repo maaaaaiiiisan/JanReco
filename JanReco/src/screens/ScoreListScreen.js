@@ -20,8 +20,8 @@ export default class ScoreListScreen extends Component {
 
   state = { table_info: []};
 
-  componentWillMount = () => {
-    return fetch('https://api.myjson.com/bins/1bhw4d')
+  async componentDidMount　(){
+    await fetch('https://api.myjson.com/bins/1bhw4d')
     .then((response) => response.json())
     .then((responseJson) => {
       this.setState({
