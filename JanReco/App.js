@@ -7,6 +7,7 @@ import TeamListScreen from './src/screens/TeamListScreen';
 import TeamInfoScreen from './src/screens/TeamInfoScreen';
 import TeamMemScreen from './src/screens/TeamMemScreen';
 import TeamInviteScreen from './src/screens/TeamInviteScreen';
+import MakeTableScreen from './src/screens/MakeTableScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
 
 const App = createStackNavigator({
@@ -17,6 +18,7 @@ const App = createStackNavigator({
   TeamInfo: { screen: TeamInfoScreen },
   TeamMem: { screen: TeamMemScreen },
   TeamInvite: { screen: TeamInviteScreen },
+  MakeTable: { screen: MakeTableScreen },
   Profile: { screen: ProfileScreen },
   Login: { screen: LoginScreen },
 }, {
