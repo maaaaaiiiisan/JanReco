@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Button, ScrollView, Image, TouchableOpacity } from 'react-native';
 import ScoreList from '../components/ScoreList';
-import CircleButton from '../elements/CircleButton';
+import CircleButton from '../components/CircleButton';
 import TabNavigation from '../components/TabNavigation';
 import ModalRadio from '../components/ModalRadio';
 import Modal from "react-native-modal";
@@ -20,8 +20,8 @@ export default class ScoreListScreen extends Component {
 
   state = { table_info: []};
 
-  componentWillMount = () => {
-    return fetch('https://api.myjson.com/bins/1bhw4d')
+  async componentDidMount　(){
+    await fetch('https://api.myjson.com/bins/1bhw4d')
     .then((response) => response.json())
     .then((responseJson) => {
       this.setState({
@@ -56,7 +56,7 @@ export default class ScoreListScreen extends Component {
     return(
       <View style={styles.container}>
         <TabNavigation navigation={this.props.navigation}　/>
-        <ScrollView>
+        <ScrollView style={styles.scorelist}>
           {this.renderScoreLists()}
         </ScrollView>
         <CircleButton name="filter" onPress={ this.openModal } />
@@ -83,28 +83,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   scorelist: {
-    backgroundColor: '#fff',
-    padding: 20,
-    height: 80,
-    borderColor: '#787c7b',
-    borderBottomWidth: 0.5,
-    flexDirection: 'row',
-  },
-  scorelist_firstLine: {
-    flexDirection: 'row',
-  },
-  scorelist_name: {
-    fontSize: 16,
-    paddingBottom: 5,
-  },
-  scorelist_score: {
-    fontSize: 20,
-    alignSelf: 'flex-end',
-    textAlign: 'right',
-    marginLeft: 120,
-  },
-  scorelist_info: {
-    color: '#787c7b',
+    flex: 1,
   },
   bottomModal: {
     justifyContent: 'flex-end',

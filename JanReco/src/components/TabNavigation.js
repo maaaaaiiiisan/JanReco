@@ -10,7 +10,7 @@ export default class TabNavigation extends Component {
 
   render() {
     return(
-      <View>
+      <View style={styles.container}>
         <View style={styles.menu}>
           <TouchableOpacity
               style={[styles.menu_title, styles.selected_menu_title]}
@@ -28,7 +28,7 @@ export default class TabNavigation extends Component {
           </TouchableOpacity>
           <TouchableOpacity
               style={styles.menu_title}
-              onPress={() => { this.props.navigation.navigate('TeamList')}}
+              onPress={() => { this.props.navigation.navigate('MakeTable')}}
             >
               <Icon style={styles.menu_icon}　name="check-circle" />
               <Text style={styles.menu_text}>卓作成</Text>
